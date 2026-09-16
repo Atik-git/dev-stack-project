@@ -1,13 +1,15 @@
+import Nav from "./components/Nav"
 
 
 
 function App() {
 
-  return (
-    <>
-      
-    </>
-  )
-}
+  
+    return (
+      <>
+        <Nav></Nav>
+      </>
+    )
+  }
 
-export default App
+  export default App
