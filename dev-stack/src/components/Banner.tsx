@@ -2,7 +2,7 @@
 import BannerImage from "../assets/banner.png"
 const Banner = () => {
     return (
-        <div className="md:flex md:items-center md:justify-center px-4 md:px-0 py-12 md:py-30 space-y-4  md:container md:mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-center px-4 md:px-0 py-12 md:py-30 space-y-4  md:container md:mx-auto">
             <div className="space-y-4 flex-1">
                 {/* banner-title */}
                 <h1 className="text-3xl md:text-6xl text-center md:text-left font-bold md:mb-8">Build Your Ideal <br /> <span className="bg-linear-to-r from-[#f8701e] via-rose-500 to-[#ec4a94] bg-clip-text text-transparent">Develpnment Stack</span></h1>
