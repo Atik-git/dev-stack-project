@@ -4,6 +4,7 @@ import TechnologyCard from "./TechnologyCard";
 import SelectedTechnologies from "./SelectedTechnologies";
 
 const Technologies = ({ techDataPromise }: TechnologyProps) => {
+    
 
     const [selectedTechnologies, setSelectedTechnologies] = useState<Technology[]>([])
     const technologies = use(techDataPromise);
@@ -19,11 +20,13 @@ const Technologies = ({ techDataPromise }: TechnologyProps) => {
             <div className="grid lg:grid-cols-4 gap-4">
                 <div className="grid lg:grid-cols-3 gap-4 lg:col-span-3">
                     {
-                        technologies.map((technology, i) => <TechnologyCard key={i} technology={technology} selectedTechnologies = {selectedTechnologies} setSelectedTechnologies = {setSelectedTechnologies}></TechnologyCard>)
+                        technologies.map((technology, i) => <TechnologyCard key={i} technology={technology} selectedTechnologies = {selectedTechnologies} setSelectedTechnologies = {setSelectedTechnologies} 
+                        ></TechnologyCard>)
                     }
                 </div>
                 <div>
-                    <SelectedTechnologies></SelectedTechnologies>
+                    <SelectedTechnologies selectedTechnologies = {selectedTechnologies} setSelectedTechnologies = {setSelectedTechnologies} 
+                     ></SelectedTechnologies>
                 </div>
             </div>
         </div>

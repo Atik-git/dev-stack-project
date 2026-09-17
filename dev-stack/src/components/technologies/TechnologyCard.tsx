@@ -1,11 +1,21 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import type { Technology } from "../../types";
 import { IoStar } from "react-icons/io5";
-const TechnologyCard = ({ technology, selectedTechnologies, setSelectedTechnologies }: { technology: Technology; selectedTechnologies: Technology[], setSelectedTechnologies: Dispatch<SetStateAction<Technology[]>> }) => {
-    console.log(selectedTechnologies, setSelectedTechnologies)
+
+const TechnologyCard = ({ technology, selectedTechnologies, setSelectedTechnologies  }: { technology: Technology; selectedTechnologies: Technology[]; setSelectedTechnologies: Dispatch<SetStateAction<Technology[]>>; }) => {
+
     const { name, category, description, icon, rating, difficulty, badge } = technology;
+
+    // state for add to stack button to know if it is clicked
+    const [isAdded , setIsAdded] = useState<boolean>(false)
+
+    // handler function for Add to stack button
+    const handleAddedStack = (technology: Technology) => {
+        setSelectedTechnologies([...selectedTechnologies, technology])
+        setIsAdded(true);
+    }
     return (
-        <div className="border border-gray-200 relative p-4 space-y-4 rounded-xl shadow-sm">
+        <div className={isAdded? `border-2 border-[#983f62] relative p-4 space-y-4 rounded-xl shadow-sm` :`border border-gray-200 relative p-4 space-y-4 rounded-xl shadow-sm`}>
             {/* badge */}
             <span className="absolute top-4 right-4 font-bold px-3 py-1 rounded-2xl text-[12px] text-[#0369A1] bg-[#E0F2FE]">{badge}</span>
 
@@ -31,7 +41,7 @@ const TechnologyCard = ({ technology, selectedTechnologies, setSelectedTechnolog
             </div>
 
             {/* Add to stack button */}
-            <button className="border w-full rounded-lg py-2 text-white  bg-black">Add to Stack</button>
+            <button disabled = {isAdded} onClick={() => handleAddedStack(technology)} className={isAdded ? ` w-full rounded-lg py-2 text-[#983f62]  bg-[#FCF2F6] font-bold cursor-not-allowed` :`border w-full rounded-lg py-2 text-white  bg-black`}> {isAdded ? `Added to Stack`: `Add to Stack` }</button>
 
         </div>
     );
