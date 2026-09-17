@@ -16,8 +16,8 @@ const Technologies = ({ techDataPromise }: TechnologyProps) => {
                 {/* explore technologies description */}
                 <p className="text-center lg:text-start text-[12px] lg:text-[16px] text-[#6B7280] ">Pick one technology per category to build your ideal stack</ p>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-                <div className="grid lg:grid-cols-3 gap-4 col-span-3">
+            <div className="grid lg:grid-cols-4 gap-4">
+                <div className="grid lg:grid-cols-3 gap-4 lg:col-span-3">
                     {
                         technologies.map((technology, i) => <TechnologyCard key={i} technology={technology} selectedTechnologies = {selectedTechnologies} setSelectedTechnologies = {setSelectedTechnologies}></TechnologyCard>)
                     }
