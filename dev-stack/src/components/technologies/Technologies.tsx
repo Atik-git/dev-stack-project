@@ -5,7 +5,6 @@ import SelectedTechnologies from "./SelectedTechnologies";
 
 const Technologies = ({ techDataPromise }: TechnologyProps) => {
     
-
     const [selectedTechnologies, setSelectedTechnologies] = useState<Technology[]>([])
     const technologies = use(techDataPromise);
     return (

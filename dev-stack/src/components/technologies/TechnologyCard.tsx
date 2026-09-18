@@ -1,18 +1,21 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { Technology } from "../../types";
 import { IoStar } from "react-icons/io5";
+import {toast } from 'react-toastify';
 
 const TechnologyCard = ({ technology, selectedTechnologies, setSelectedTechnologies  }: { technology: Technology; selectedTechnologies: Technology[]; setSelectedTechnologies: Dispatch<SetStateAction<Technology[]>>; }) => {
 
     const { name, category, description, icon, rating, difficulty, badge } = technology;
 
+    const isAdded = selectedTechnologies.some(tech => tech.id === technology.id);
+
     // state for add to stack button to know if it is clicked
-    const [isAdded , setIsAdded] = useState<boolean>(false)
+    // const [isAdded , setIsAdded] = useState<boolean>(false)
 
     // handler function for Add to stack button
     const handleAddedStack = (technology: Technology) => {
         setSelectedTechnologies([...selectedTechnologies, technology])
-        setIsAdded(true);
+        toast(`${technology.name} is Added`)
     }
     return (
         <div className={isAdded? `border-2 border-[#983f62] relative p-4 space-y-4 rounded-xl shadow-sm` :`border border-gray-200 relative p-4 space-y-4 rounded-xl shadow-sm`}>

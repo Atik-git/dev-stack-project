@@ -1,10 +1,17 @@
 
-
+import {toast} from "react-toastify"
+import type { Dispatch, SetStateAction } from "react";
 import type { Technology } from "../../types";
 import { RxCross2 } from "react-icons/rx";
 
-const SelectedTechCard = ({ technology }: { technology: Technology;  }) => {
+const SelectedTechCard = ({ technology, selectedTechnologies, setSelectedTechnologies  }: { technology: Technology; selectedTechnologies: Technology[]; setSelectedTechnologies: Dispatch<SetStateAction<Technology[]>>; }) => {
     const { name, category, icon } = technology;
+
+    const handleRemoveStack = (tech: Technology) => {
+        const remainingTech = selectedTechnologies.filter((technology => tech.id !== technology.id ));
+        setSelectedTechnologies(remainingTech);
+        toast(`${tech.name} is removed from stack`)
+    }
     return (
         <div>
             <div className="flex justify-between items-center border border-gray-300 rounded-xl p-3">
@@ -21,7 +28,7 @@ const SelectedTechCard = ({ technology }: { technology: Technology;  }) => {
                 </div>
 
                 {/* Cross button */}
-                <div className="text-red-500 text-[24px]">
+                <div onClick={() => handleRemoveStack(technology)} className="text-red-500 text-[24px]">
                     <RxCross2/>
                 </div>
             </div>

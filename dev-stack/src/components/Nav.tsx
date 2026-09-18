@@ -2,7 +2,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Logo from "../assets/logo-text.png"
 const Nav = () => {
     return (
-        <header className="shadow-sm">
+        <header className="shadow-sm sticky top-0 bg-white z-1">
             <div className="flex justify-between items-center py-3 px-4 lg:py-6 lg:px-0   lg:container mx-auto">
                 {/* hamburger-icon */}
                 <div className="hamburger-icon text-3xl lg:hidden">

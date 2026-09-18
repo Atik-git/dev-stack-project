@@ -1,11 +1,14 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { Technology } from "../../types";
 import SelectedTechCard from "./SelectedTechCard";
+import {toast} from "react-toastify";
 
-const SelectedTechnologies = ({ selectedTechnologies, setSelectedTechnologies }: { selectedTechnologies: Technology[]; setSelectedTechnologies: Dispatch<SetStateAction<Technology[]>>;}) => {
+
+const SelectedTechnologies = ({ selectedTechnologies, setSelectedTechnologies }: { selectedTechnologies: Technology[]; setSelectedTechnologies: Dispatch<SetStateAction<Technology[]>>; }) => {
 
     const handleRemoveAll = () => {
         setSelectedTechnologies([]);
+        toast(`Stack is empty`)
     }
     return (
         <div className="border border-gray-200 p-4 rounded-xl shadow-sm space-y-2">
@@ -21,7 +24,7 @@ const SelectedTechnologies = ({ selectedTechnologies, setSelectedTechnologies }:
             </div>
            <div className= {`space-y-4 ${selectedTechnologies.length === 0 ? "hidden" : "block"}`}>
             {
-                 selectedTechnologies.length !== 0 && selectedTechnologies.map((technology, i) =>  <SelectedTechCard key={i} technology = {technology}></SelectedTechCard>)
+                 selectedTechnologies.length !== 0 && selectedTechnologies.map((technology, i) =>  <SelectedTechCard key={i} technology = {technology} selectedTechnologies = {selectedTechnologies} setSelectedTechnologies = {setSelectedTechnologies}></SelectedTechCard>)
             }
            </div>
 
